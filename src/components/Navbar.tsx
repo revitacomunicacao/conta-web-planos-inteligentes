@@ -21,9 +21,9 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b">
-      <nav className="container flex items-center justify-between h-16 md:h-18">
+      <nav className="container flex items-center justify-between h-20 md:h-24">
         <Link to="/" className="flex items-center gap-2">
-          <img src={logo} alt="Conta Web" className="h-9 md:h-10" />
+          <img src={logo} alt="Conta Web" className="h-16 md:h-20" />
         </Link>
 
         {/* Desktop */}
