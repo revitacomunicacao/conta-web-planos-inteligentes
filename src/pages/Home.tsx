@@ -43,8 +43,7 @@ function Hero() {
               Sua contabilidade no <span className="text-primary">piloto automático</span>
             </h1>
             <p className="max-w-lg text-lg leading-relaxed text-muted-foreground">
-              Planos acessíveis, atendimento humano e uma plataforma inteligente para abrir,
-              organizar e acompanhar sua empresa sem burocracia.
+              A Conta Web realiza atendimento a empresas comerciais, industriais, serviços, construção civil e entidades do terceiro setor. Soluções contábeis e gerenciais com planos acessíveis e atendimento humano.
             </p>
             <div className="flex flex-wrap gap-3 pt-2">
               <Button asChild size="lg" className="rounded-full text-base">
