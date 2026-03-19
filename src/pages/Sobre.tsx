@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
-import { Target, Users, Lightbulb, Heart, Building, Factory, Hammer, Globe, MessageCircle, ArrowRight } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+import { Building, Factory, Hammer, Globe, Heart, Users, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SectionWrapper from "@/components/SectionWrapper";
 import { getWhatsAppLink } from "@/lib/whatsapp";
@@ -13,13 +12,6 @@ const stagger = {
   hidden: {},
   show: { transition: { staggerChildren: 0.1 } },
 };
-
-const values = [
-  { icon: Target, title: "Tecnologia", desc: "Plataforma própria com ferramentas inteligentes para você gerenciar tudo em tempo real." },
-  { icon: Users, title: "Atendimento Humanizado", desc: "Contadores de verdade sempre disponíveis para tirar dúvidas e orientar decisões." },
-  { icon: Lightbulb, title: "Inovação", desc: "Investimos constantemente em IA e automação para simplificar sua contabilidade." },
-  { icon: Heart, title: "Transparência", desc: "Planos com preço fixo, sem taxa de adesão e sem cobranças surpresa." },
-];
 
 const segments = [
   { icon: Building, label: "Comércio" },
@@ -38,46 +30,17 @@ export default function Sobre() {
         <div className="container">
           <div className="max-w-3xl">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-              <h1 className="heading-display text-4xl md:text-5xl mb-6">Sobre a Conta Web</h1>
+              <h1 className="heading-display text-4xl md:text-5xl mb-6">A Conta Web</h1>
               <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-                A <strong className="text-foreground">Conta Web</strong> nasceu com a missão de democratizar a contabilidade no Brasil. Acreditamos que toda empresa, independente do porte, merece acesso a serviços contábeis de qualidade, com tecnologia de ponta e preços acessíveis.
+                A Conta Web realiza atendimento a empresas comerciais, industriais, serviços, construção civil e entidades do terceiro setor. Formando e profissionalizando a equipe de apoio ao cumprimento das obrigações acessórias em geral e seus reflexos. Visando as soluções contábeis e gerenciais.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Com uma equipe de contadores experientes e uma plataforma digital completa, oferecemos muito mais do que um escritório de contabilidade tradicional — entregamos uma experiência moderna, transparente e eficiente.
+                Com uma equipe de contadores experientes e uma plataforma digital completa, oferecemos muito mais do que um escritório de contabilidade tradicional — entregamos uma experiência moderna, transparente e eficiente para empresas de todos os portes e segmentos.
               </p>
             </motion.div>
           </div>
         </div>
       </section>
-
-      {/* Values */}
-      <SectionWrapper>
-        <div className="mb-10">
-          <h2 className="heading-display text-2xl md:text-3xl">Nossos Valores</h2>
-          <p className="text-muted-foreground mt-2">O que nos move todos os dias.</p>
-        </div>
-        <motion.div
-          variants={stagger}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5"
-        >
-          {values.map((v) => (
-            <motion.div key={v.title} variants={fadeUp}>
-              <Card className="h-full rounded-2xl border-border/50 hover:shadow-lg transition-shadow">
-                <CardContent className="p-6 space-y-3">
-                  <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center">
-                    <v.icon className="w-5 h-5 text-primary" />
-                  </div>
-                  <h3 className="font-display font-semibold">{v.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{v.desc}</p>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </motion.div>
-      </SectionWrapper>
 
       {/* Segments */}
       <SectionWrapper className="bg-secondary/30">
