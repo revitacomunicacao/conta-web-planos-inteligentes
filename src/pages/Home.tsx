@@ -43,10 +43,10 @@ function Hero() {
             <span className="inline-flex rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
               Contabilidade 100% Digital
             </span>
-            <h1 className="heading-display text-4xl !leading-tight md:text-5xl lg:text-6xl">
+            <h1 className="text-white heading-display text-4xl !leading-tight md:text-5xl lg:text-6xl">
               Sua contabilidade no <span className="text-primary">piloto automático</span>
             </h1>
-            <p className="max-w-lg text-lg leading-relaxed text-muted-foreground">
+            <p className="max-w-lg text-lg leading-relaxed text-white">
               A Conta Web realiza atendimento a empresas comerciais, industriais, serviços, construção civil e entidades do terceiro setor. Soluções contábeis e gerenciais com planos acessíveis e atendimento humano.
             </p>
             <div className="flex flex-wrap gap-3 pt-2">
