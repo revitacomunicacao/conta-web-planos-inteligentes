@@ -120,27 +120,27 @@ function ServicesBento() {
   const services = [
     {
       title: "Abertura de Empresa",
-      desc: "Abra seu CNPJ com orientação completa e sem dor de cabeça.",
+      desc: "Realizamos todos os processos junto à Receita Federal e Junta Comercial para a abertura, alteração, reativação e encerramento de empresas.",
     },
     {
       title: "Contabilidade Digital",
-      desc: "Rotina contábil organizada para Simples, Presumido e Real.",
+      desc: "Rotina contábil organizada para Simples Nacional, Lucro Presumido e Lucro Real, com escrituração e relatórios completos.",
     },
     {
       title: "Gestão Fiscal",
-      desc: "Impostos, obrigações acessórias e planejamento tributário em dia.",
+      desc: "Apuração de impostos federais, estaduais e municipais, obrigações acessórias e planejamento tributário.",
     },
     {
       title: "Departamento Pessoal",
-      desc: "Folha, admissões, férias, rescisões e eSocial com suporte humano.",
+      desc: "Folha de pagamento, registro de empregados, férias, 13º, rescisões, eSocial e DCTFWEB com suporte humano.",
     },
     {
       title: "Consultoria Empresarial",
-      desc: "Apoio estratégico para decisões com mais clareza financeira.",
+      desc: "Diagnóstico de problemas e análise de dados da empresa para reduzir custos, otimizar finanças e planejar expansões.",
     },
     {
       title: "IRPF",
-      desc: "Declaração de imposto de renda com segurança e acompanhamento.",
+      desc: "Declaração de imposto de renda pessoa física com análise completa da movimentação e acompanhamento até o processamento pela Receita Federal.",
     },
   ];
 
@@ -150,8 +150,7 @@ function ServicesBento() {
         <div className="space-y-4">
           <h2 className="heading-display text-3xl md:text-4xl">Tudo que sua empresa precisa</h2>
           <p className="max-w-xl text-muted-foreground">
-            A Conta Web combina atendimento consultivo com processos digitais para reduzir
-            burocracia e dar mais previsibilidade ao seu negócio.
+            A Conta Web realiza atendimento a empresas comerciais, industriais, serviços, construção civil e entidades do terceiro setor. Formando e profissionalizando a equipe de apoio ao cumprimento das obrigações acessórias em geral e seus reflexos, visando as soluções contábeis e gerenciais.
           </p>
           <Button asChild variant="outline" className="rounded-full">
             <Link to="/servicos">Ver todos os serviços</Link>
@@ -167,6 +166,8 @@ function ServicesBento() {
         </div>
       </div>
 
+      <h3 className="heading-display text-2xl md:text-3xl mb-6">Nossos Serviços</h3>
+
       <motion.div
         variants={stagger}
         initial="hidden"
@@ -178,7 +179,6 @@ function ServicesBento() {
           <motion.div key={service.title} variants={fadeUp}>
             <Card className="h-full rounded-2xl border-border/50 transition-shadow hover:shadow-lg">
               <CardContent className="space-y-3 p-6">
-                <p className="text-xs uppercase tracking-[0.2em] text-primary">Serviço</p>
                 <h3 className="font-display text-lg font-semibold">{service.title}</h3>
                 <p className="text-sm leading-relaxed text-muted-foreground">{service.desc}</p>
               </CardContent>
