@@ -13,6 +13,8 @@ import { getWhatsAppLink, getWhatsAppPlanLink } from "@/lib/whatsapp";
 import fullbannerPhoto from "@/assets/fullbanner-contaweb.jpg.jpeg";
 import servicesPhoto from "@/assets/home-services-photo.jpg";
 import platformPhoto from "@/assets/home-platform-photo.jpg";
+import { services as serviceCategories } from "@/lib/services";
+import { serviceAnchor } from "@/lib/serviceAnchor";
 
 const stagger = {
   hidden: {},
@@ -100,32 +102,7 @@ function Metrics() {
 }
 
 function ServicesBento() {
-  const services = [
-    {
-      title: "Abertura de Empresa",
-      desc: "Realizamos todos os processos junto à Receita Federal e Junta Comercial para a abertura, alteração, reativação e encerramento de empresas.",
-    },
-    {
-      title: "Contabilidade Digital",
-      desc: "Rotina contábil organizada para Simples Nacional, Lucro Presumido e Lucro Real, com escrituração e relatórios completos.",
-    },
-    {
-      title: "Gestão Fiscal",
-      desc: "Apuração de impostos federais, estaduais e municipais, obrigações acessórias e planejamento tributário.",
-    },
-    {
-      title: "Departamento Pessoal",
-      desc: "Folha de pagamento, registro de empregados, férias, 13º, rescisões, eSocial e DCTFWEB com suporte humano.",
-    },
-    {
-      title: "Consultoria Empresarial",
-      desc: "Diagnóstico de problemas e análise de dados da empresa para reduzir custos, otimizar finanças e planejar expansões.",
-    },
-    {
-      title: "IRPF",
-      desc: "Declaração de imposto de renda pessoa física com análise completa da movimentação e acompanhamento até o processamento pela Receita Federal.",
-    },
-  ];
+  const services = serviceCategories.flatMap((cat) => cat.items);
 
   return (
     <SectionWrapper>
@@ -156,14 +133,27 @@ function ServicesBento() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
-        className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
+        className="grid gap-5 sm:grid-cols-2 md:grid-cols-4"
       >
         {services.map((service) => (
-          <motion.div key={service.title} variants={fadeUp}>
+          <motion.div key={service.title} variants={fadeUp} className="h-full">
             <Card className="h-full rounded-2xl border-border/50 transition-shadow hover:shadow-lg">
-              <CardContent className="space-y-3 p-6">
-                <h3 className="font-display text-lg font-semibold">{service.title}</h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">{service.desc}</p>
+              <CardContent className="flex h-full flex-col space-y-3 p-6">
+                <h3
+                  className="font-display text-lg font-semibold leading-7 min-h-[5.25rem]"
+                >
+                  {service.title}
+                </h3>
+                <p
+                  className="text-sm leading-relaxed text-muted-foreground flex-1"
+                >
+                  {service.shortDesc ?? service.desc}
+                </p>
+                <div className="mt-auto pt-2">
+                  <Button asChild variant="outline" size="sm" className="rounded-full">
+                    <Link to={`/servicos#${serviceAnchor(service.title)}`}>Saiba mais</Link>
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           </motion.div>
