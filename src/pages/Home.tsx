@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/accordion";
 import SectionWrapper from "@/components/SectionWrapper";
 import { getWhatsAppLink, getWhatsAppPlanLink } from "@/lib/whatsapp";
-import heroPhoto from "@/assets/home-hero-photo.jpg";
+import fullbannerPhoto from "@/assets/fullbanner-contaweb.jpg.jpeg";
 import servicesPhoto from "@/assets/home-services-photo.jpg";
 import platformPhoto from "@/assets/home-platform-photo.jpg";
 
@@ -26,16 +26,20 @@ const fadeUp = {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden pt-28 pb-20 md:pt-36 md:pb-28">
+    <section className="relative md:mt-20 overflow-hidden pt-28 pb-20 md:pt-36 md:pb-28">
+      {/* Background image (substitui a coluna direita) */}
+      <div
+        className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-90"
+        style={{ backgroundImage: `url(${fullbannerPhoto})` }}
+      />
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/10" />
-      <div className="container relative">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7 }}
-            className="space-y-6"
-          >
+      <div className="container relative flex items-center justify-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="mx-auto w-full max-w-2xl space-y-6"
+        >
             <span className="inline-flex rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
               Contabilidade 100% Digital
             </span>
@@ -59,27 +63,7 @@ function Hero() {
                 <Link to="/planos">Ver Planos</Link>
               </Button>
             </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="relative"
-          >
-            <div className="overflow-hidden rounded-[2rem] border border-border/60 bg-card shadow-2xl">
-              <img
-                src={heroPhoto}
-                alt="Profissional da Conta Web analisando indicadores financeiros em notebook"
-                className="h-full w-full object-cover"
-              />
-            </div>
-            <div className="absolute -bottom-6 left-6 rounded-2xl border border-border/60 bg-background/95 p-4 shadow-lg backdrop-blur sm:left-8">
-              <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Atendimento</p>
-              <p className="mt-1 font-display text-2xl text-foreground">Ágil e consultivo</p>
-            </div>
-          </motion.div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
