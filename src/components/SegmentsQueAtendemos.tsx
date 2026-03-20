@@ -28,6 +28,7 @@ import {
 } from "lucide-react";
 
 import SectionWrapper from "@/components/SectionWrapper";
+import { cn } from "@/lib/utils";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -63,9 +64,9 @@ const segments = [
   { icon: Sprout, label: "Produtores Rurais" },
 ];
 
-export default function SegmentsQueAtendemos() {
+export default function SegmentsQueAtendemos({ compact = false }: { compact?: boolean }) {
   return (
-    <SectionWrapper className="bg-secondary/30">
+    <SectionWrapper className={cn("bg-secondary/30", compact && "!py-10 md:!py-14")}>
       <div className="text-center mb-10">
         <h2 className="heading-display text-2xl md:text-3xl">Áreas de atuações</h2>
       </div>

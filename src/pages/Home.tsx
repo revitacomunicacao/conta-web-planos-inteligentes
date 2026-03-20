@@ -450,7 +450,7 @@ export default function Home() {
       <Hero />
       <Metrics />
       <ServicesBento />
-      <SegmentsQueAtendemos />
+      <SegmentsQueAtendemos compact />
       <FreeCta />
       <PlatformPreview />
       <PlansPreview />
