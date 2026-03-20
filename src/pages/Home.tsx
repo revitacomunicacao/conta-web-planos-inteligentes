@@ -15,6 +15,7 @@ import servicesPhoto from "@/assets/home-services-photo.jpg";
 import platformPhoto from "@/assets/home-platform-photo.jpg";
 import { services as serviceCategories } from "@/lib/services";
 import { serviceAnchor } from "@/lib/serviceAnchor";
+import SegmentsQueAtendemos from "@/components/SegmentsQueAtendemos";
 
 const stagger = {
   hidden: {},
@@ -110,7 +111,8 @@ function ServicesBento() {
         <div className="space-y-4">
           <h2 className="heading-display text-3xl md:text-4xl">Tudo que sua empresa precisa</h2>
           <p className="max-w-xl text-muted-foreground">
-            A Conta Web realiza atendimento a empresas comerciais, industriais, serviços, construção civil e entidades do terceiro setor. Formando e profissionalizando a equipe de apoio ao cumprimento das obrigações acessórias em geral e seus reflexos, visando as soluções contábeis e gerenciais.
+            A Conta Web é um escritório de contabilidade online, reconhecido pela confiança, agilidade e qualidade no atendimento aos seus clientes. Liderada por um gestor com mais de 40 anos de experiência na área contábil, a empresa combina tradição e conhecimento com tecnologia e soluções modernas. <br />Especializada em oferecer suporte completo para empresas, a Conta Web atua como uma parceira estratégica, proporcionando praticidade e eficiência por meio de um atendimento digital, sem abrir mão da proximidade e do cuidado com cada cliente. <br />Pensando em proporcionar a melhor experiência desde o início, a Conta Web oferece a abertura de CNPJ gratuita mediante plano de fidelização de 12 meses, facilitando o caminho para quem deseja empreender com segurança e suporte profissional. <br />A Conta Web analisa e avalia os impactos da Reforma Tributária para sua empresa, garantindo decisões mais seguras e estratégicas. <br />Mais do que contabilidade, a Conta Web entrega tranquilidade, organização e resultados para quem busca crescer com inteligência e solidez no mercado. <br />Deixa a burocracia com a Uberconta e foque no que realmente importa: o crescimento do seu negócio           
+            .
           </p>
           <Button asChild variant="outline" className="rounded-full">
             <Link to="/servicos">Ver todos os serviços</Link>
@@ -340,28 +342,28 @@ function PlansPreview() {
 function FAQ() {
   const faqs = [
     {
-      q: "Como funciona a contabilidade por planos?",
-      a: "Em vez de contratar um escritório inteiro, você escolhe um plano mensal que inclui os serviços contábeis que sua empresa precisa. É mais simples, previsível e 100% digital.",
+      q: "Como faço a transição do meu contador atual para a Conta Web?",
+      a: "Você deverá entrar em contato com o seu contador atual para comunicar formalmente o encerramento do vínculo contratual, bem como a sua intenção de migrar para um serviço de contabilidade online. É importante solicitar que ele providencie, dentro do prazo acordado, a entrega de toda a documentação da empresa, incluindo documentos legais e societários, livros fiscais e contábeis, folhas de pagamento, obrigações acessórias e demais registros pertinentes. Caso surja qualquer dúvida durante esse processo, nossa equipe de contadores online estará à disposição para oferecer todo o suporte necessário. Observação: Caso a migração ocorra ao longo do exercício, solicite ao contador anterior que realize o encerramento parcial das informações contábeis, com a devida transmissão das obrigações acessórias, como SPED ECD (caso houver), garantindo a correta transferência da responsabilidade técnica.",
     },
     {
-      q: "Posso abrir minha empresa com a Conta Web?",
-      a: "Sim. Cuidamos de todo o processo de abertura do CNPJ, incluindo registros, inscrições e orientações para a operação começar corretamente.",
+      q: "Há necessidade de encaminhar toda a documentação física entregue pelo contador anterior para a Conta Web?",
+      a: "Não se preocupe, não será necessário enviar a documentação física. Esses documentos devem permanecer sob sua guarda na empresa, conforme a legislação. Para facilitar o processo, solicitaremos apenas o envio de alguns documentos de forma digital (em PDF), diretamente pelo seu Ambiente Seguro em nosso portal. Com isso, conseguimos dar continuidade aos serviços com agilidade e segurança. Fique tranquilo, nossa equipe estará ao seu lado em cada etapa, orientando tudo o que for necessário para uma transição simples e sem burocracia.",
     },
     {
-      q: "Qual a diferença para um escritório de contabilidade tradicional?",
-      a: "Você tem preço mensal claro, atendimento digital, acompanhamento em tempo real e a mesma profundidade técnica de uma contabilidade consultiva.",
+      q: "Como é feito o envio de documentos e a comunicação entre minha empresa e a Conta Web no dia a dia?",
+      a: "A comunicação entre a sua empresa e a nossa contabilidade online será realizada de forma prática e ágil, por meio do Ambiente Seguro do cliente ou via WhatsApp, garantindo rapidez no atendimento e proximidade no dia a dia. Já o envio e recebimento de documentos ocorrerão de forma totalmente digital, através do Ambiente Seguro em nosso portal, utilizando arquivos em PDF, XML e outros formatos necessários, assegurando organização e segurança das informações.",
     },
     {
-      q: "A plataforma substitui meu contador?",
-      a: "Não. A plataforma complementa o atendimento contábil, trazendo mais autonomia para sua empresa enquanto os contadores cuidam da parte técnica.",
+      q: "Quando posso começar a aproveitar os serviços da Conta Web na minha empresa?",
+      a: "Você pode iniciar sua contabilidade online com a Conta Web de forma imediata! Assim que formalizarmos a contratação e recebermos as informações iniciais da sua empresa, nossa equipe já começa o processo de transição. Nosso objetivo é garantir uma migração rápida, organizada e sem impacto na rotina do seu negócio, cuidando de toda a parte burocrática para você. Quanto antes iniciarmos, mais rápido conseguimos estruturar sua contabilidade e gerar informações estratégicas para a sua empresa.",
     },
     {
-      q: "Posso migrar de outro contador?",
-      a: "Sim. Fazemos a migração com acompanhamento e cuidamos da transição para evitar impacto na rotina da sua empresa.",
+      q: "É possível estruturar um plano exclusivo de contabilidade online e assessoria, totalmente adaptado às necessidades da minha empresa, além dos serviços padrão do orçamento?",
+      a: "Sim! Na Conta Web, entendemos que cada empresa possui necessidades específicas, por isso oferecemos a possibilidade de estruturar um plano totalmente personalizado de contabilidade online e assessoramento. Além dos pacotes padrão, podemos adaptar nossos serviços de acordo com a realidade, o porte e os objetivos do seu negócio, garantindo uma solução mais estratégica, eficiente e alinhada ao que você realmente precisa. Nossa equipe fará uma análise do seu cenário para propor a melhor configuração de serviços, sempre buscando otimizar custos e potencializar resultados. Fale com um de nossos especialistas e descubra como podemos montar um plano sob medida para a sua empresa.",
     },
     {
-      q: "Vocês atendem qual tipo de empresa?",
-      a: "Atendemos empresas comerciais, industriais, de serviços, construção civil e terceiro setor, desde MEI até regimes mais robustos.",
+      q: "Caso eu não me identifique com o modelo de contabilidade online, como funciona o processo de cancelamento dos serviços?",
+      a: "Entendemos que a adaptação pode levar um tempo e estamos à disposição para te ajudar no que for necessário. Caso ainda opte pelo cancelamento, basta formalizar a solicitação com nossa equipe. Cuidaremos de todo o processo de forma rápida, segura e sem impacto para sua empresa.",
     },
   ];
 
@@ -416,12 +418,40 @@ function CtaBanner() {
   );
 }
 
+function FreeCta() {
+  return (
+    <SectionWrapper>
+      <div className="rounded-3xl bg-gradient-to-br from-primary to-sky-light p-10 text-center text-primary-foreground md:p-16">
+        <h2 className="heading-display mb-4 text-3xl md:text-4xl">
+          ABRA SUA EMPRESA DE FORMA 100% GRATUITA E 100% ONLINE!
+        </h2>
+        <p className="mx-auto max-w-2xl text-primary-foreground/85">
+          Abra seu CNPJ de forma gratuita, simples e sem burocracia com a Conta Web. Com um plano de fidelização de 12 meses, você inicia seu negócio com todo o suporte necessário e a tranquilidade de ter especialistas cuidando de tudo para você.
+        </p>
+        <div className="mt-8 flex justify-center">
+          <Button
+            asChild
+            size="lg"
+            className="rounded-full bg-background text-base text-foreground hover:bg-background/90"
+          >
+            <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer">
+              Abrir CNPJ Grátis
+            </a>
+          </Button>
+        </div>
+      </div>
+    </SectionWrapper>
+  );
+}
+
 export default function Home() {
   return (
     <main>
       <Hero />
       <Metrics />
       <ServicesBento />
+      <SegmentsQueAtendemos />
+      <FreeCta />
       <PlatformPreview />
       <PlansPreview />
       <FAQ />

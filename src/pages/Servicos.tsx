@@ -8,6 +8,7 @@ import { getWhatsAppLink } from "@/lib/whatsapp";
 import { services as categories } from "@/lib/services";
 import { serviceAnchor } from "@/lib/serviceAnchor";
 import { MessageCircle } from "lucide-react";
+import topoInternasPhoto from "@/assets/TopoInternas.jpg.jpeg";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -40,11 +41,17 @@ export default function Servicos() {
   return (
     <main className="pt-20">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-primary/5 via-transparent to-accent/5 py-20 md:py-28">
-        <div className="container text-center">
+      <section className="relative overflow-hidden py-20 md:py-28">
+        <div
+          className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-90"
+          style={{ backgroundImage: `url(${topoInternasPhoto})` }}
+        />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5" />
+
+        <div className="container relative z-10 text-center text-white">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <h1 className="heading-display text-4xl md:text-5xl mb-4">Nossos Serviços</h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg max-w-2xl mx-auto">
               A Conta Web realiza atendimento a empresas comerciais, industriais, serviços, construção civil e entidades do terceiro setor. Formando e profissionalizando a equipe de apoio ao cumprimento das obrigações acessórias em geral e seus reflexos, visando as soluções contábeis e gerenciais.
             </p>
           </motion.div>

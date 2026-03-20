@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import SectionWrapper from "@/components/SectionWrapper";
 import { getWhatsAppLink } from "@/lib/whatsapp";
+import topoInternasPhoto from "@/assets/TopoInternas.jpg.jpeg";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -72,8 +73,14 @@ export default function Plataforma() {
   return (
     <main className="pt-20">
       {/* Hero */}
-      <section className="bg-foreground text-background py-20 md:py-28">
-        <div className="container">
+      <section className="relative overflow-hidden bg-foreground text-background py-20 md:py-28">
+        <div
+          className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-90"
+          style={{ backgroundImage: `url(${topoInternasPhoto})` }}
+        />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/15" />
+
+        <div className="container relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}>
               <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/20 text-primary rounded-full text-sm font-medium mb-4">

@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import SectionWrapper from "@/components/SectionWrapper";
 import { getWhatsAppLink } from "@/lib/whatsapp";
+import topoInternasPhoto from "@/assets/TopoInternas.jpg.jpeg";
 
 const contactInfo = [
   { icon: MessageCircle, label: "WhatsApp", value: "(00) 00000-0000", href: getWhatsAppLink() },
@@ -17,11 +18,17 @@ export default function Contato() {
   return (
     <main className="pt-20">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-primary/5 via-transparent to-accent/5 py-20 md:py-28">
-        <div className="container text-center">
+      <section className="relative overflow-hidden py-20 md:py-28">
+        <div
+          className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-90"
+          style={{ backgroundImage: `url(${topoInternasPhoto})` }}
+        />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5" />
+
+        <div className="container relative z-10 text-center text-white">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <h1 className="heading-display text-4xl md:text-5xl mb-4">Fale Conosco</h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-white max-w-2xl mx-auto">
               Estamos prontos para ajudar. Entre em contato pelo canal de sua preferência.
             </p>
           </motion.div>
