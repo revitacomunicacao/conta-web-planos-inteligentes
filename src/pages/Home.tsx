@@ -643,16 +643,8 @@ function SimuladorMeuPlano() {
               {services.map((service) => (
                 <Card key={service.title} className="h-full rounded-2xl border-border/50 transition-shadow hover:shadow-lg">
                   <CardContent className="flex h-full flex-col space-y-3 p-6">
-                    <h3 className="font-display text-lg font-semibold leading-7 min-h-[5.25rem]">{service.title}</h3>
-                    <p
-                      className="text-sm leading-relaxed text-muted-foreground flex-1"
-                      style={{
-                        display: "-webkit-box",
-                        WebkitBoxOrient: "vertical",
-                        WebkitLineClamp: 4,
-                        overflow: "hidden",
-                      }}
-                    >
+                    <h3 className="font-display text-lg font-semibold leading-7">{service.title}</h3>
+                    <p className="text-sm leading-relaxed text-muted-foreground flex-1">
                       {service.shortDesc ?? service.desc}
                     </p>
                     <div className="mt-auto pt-2">
