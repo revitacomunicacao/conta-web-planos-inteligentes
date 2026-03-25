@@ -10,7 +10,7 @@ export default function Sobre() {
   return (
     <main className="pt-20">
       {/* Hero */}
-      <section className="relative overflow-hidden py-20 md:py-28">
+      <section className="relative overflow-hidden py-20">
         <div
           className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-90"
           style={{ backgroundImage: `url(${topoInternasPhoto})` }}
@@ -34,7 +34,7 @@ export default function Sobre() {
       </section>
 
       {/* Segments */}
-      <SegmentsQueAtendemos />
+      <SegmentsQueAtendemos id="areas-de-atuacoes" />
 
       {/* CTA */}
       <SectionWrapper>

@@ -64,9 +64,15 @@ const segments = [
   { icon: Sprout, label: "Produtores Rurais" },
 ];
 
-export default function SegmentsQueAtendemos({ compact = false }: { compact?: boolean }) {
+export default function SegmentsQueAtendemos({
+  compact = false,
+  id,
+}: {
+  compact?: boolean;
+  id?: string;
+}) {
   return (
-    <SectionWrapper className={cn("bg-secondary/30", compact && "!py-10 md:!py-14")}>
+    <SectionWrapper id={id} className={cn("bg-secondary/30", compact && "!py-10 md:!py-14")}>
       <div className="text-center mb-10">
         <h2 className="heading-display text-2xl md:text-3xl">Áreas de atuações</h2>
       </div>
