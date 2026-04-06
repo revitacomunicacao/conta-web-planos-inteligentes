@@ -113,11 +113,6 @@ export default function Planos() {
 
       <div>
         <SegmentsQueAtendemos />
-        <div className="-mt-10 pb-20 text-center">
-          <Button asChild className="rounded-full">
-            <a href="/projetos/contaweb/sobre#areas-de-atuacoes">Saiba mais</a>
-          </Button>
-        </div>
       </div>
 
       {/* Plan cards */}

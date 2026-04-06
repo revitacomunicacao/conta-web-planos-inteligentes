@@ -29,8 +29,8 @@ export default function ParaQuemContaWeb() {
       </div>
 
       <div className="mt-10 text-center">
-        <Button asChild variant="outline" className="rounded-full">
-          <Link to="/sobre#areas-de-atuacoes">Saiba mais</Link>
+        <Button asChild className="rounded-full">
+          <Link to="/planos">Saiba mais</Link>
         </Button>
       </div>
     </SectionWrapper>
