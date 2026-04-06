@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import SectionWrapper from "@/components/SectionWrapper";
 import { getWhatsAppPlanLink, getWhatsAppLink } from "@/lib/whatsapp";
 import topoInternasPhoto from "@/assets/TopoInternas.jpg.jpeg";
-import ParaQuemContaWeb from "@/components/ParaQuemContaWeb";
+import SegmentsQueAtendemos from "@/components/SegmentsQueAtendemos";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -111,7 +111,14 @@ export default function Planos() {
         </div>
       </section>
 
-      <ParaQuemContaWeb />
+      <div>
+        <SegmentsQueAtendemos />
+        <div className="-mt-10 pb-20 text-center">
+          <Button asChild className="rounded-full">
+            <a href="/projetos/contaweb/sobre#areas-de-atuacoes">Saiba mais</a>
+          </Button>
+        </div>
+      </div>
 
       {/* Plan cards */}
       <SectionWrapper>
