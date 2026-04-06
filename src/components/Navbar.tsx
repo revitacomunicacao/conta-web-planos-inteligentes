@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, MessageCircle } from "lucide-react";
+import { Menu, X, MessageCircle, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getWhatsAppLink } from "@/lib/whatsapp";
 import logo from "@/assets/logo.png";
@@ -44,6 +44,16 @@ export default function Navbar() {
         </ul>
 
         <div className="hidden md:flex items-center gap-3">
+          <Button asChild variant="outline" className="rounded-full gap-2">
+            <a
+              href="https://contaweb.osayk.digital/#/cadastro"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <User className="w-4 h-4" />
+              Área do Cliente
+            </a>
+          </Button>
           <Button asChild className="rounded-full gap-2 bg-accent hover:bg-emerald-light text-accent-foreground">
             <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer">
               <MessageCircle className="w-4 h-4" />
@@ -76,6 +86,18 @@ export default function Navbar() {
                 </Link>
               </li>
             ))}
+            <li className="mt-2 px-3">
+              <Button asChild variant="outline" className="w-full rounded-full gap-2">
+                <a
+                  href="https://contaweb.osayk.digital/#/cadastro"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <User className="w-4 h-4" />
+                  Área do Cliente
+                </a>
+              </Button>
+            </li>
             <li className="mt-2 px-3">
               <Button asChild className="w-full rounded-full gap-2 bg-accent hover:bg-emerald-light text-accent-foreground">
                 <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer">

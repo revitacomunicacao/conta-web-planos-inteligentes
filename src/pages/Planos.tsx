@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import SectionWrapper from "@/components/SectionWrapper";
 import { getWhatsAppPlanLink, getWhatsAppLink } from "@/lib/whatsapp";
 import topoInternasPhoto from "@/assets/TopoInternas.jpg.jpeg";
+import ParaQuemContaWeb from "@/components/ParaQuemContaWeb";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -109,6 +110,8 @@ export default function Planos() {
           </motion.div>
         </div>
       </section>
+
+      <ParaQuemContaWeb />
 
       {/* Plan cards */}
       <SectionWrapper>

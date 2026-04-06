@@ -1,9 +1,7 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
 import {
   Accordion,
   AccordionContent,
@@ -30,7 +28,7 @@ const fadeUp = {
   show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
-function Hero({ onSimular }: { onSimular: () => void }) {
+function Hero() {
   return (
     <section className="relative md:mt-20 overflow-hidden pt-28 pb-20 md:pt-36 md:pb-28">
       {/* Background image (substitui a coluna direita) */}
@@ -58,9 +56,7 @@ function Hero({ onSimular }: { onSimular: () => void }) {
             <div className="space-y-4 pt-2">
               <p className="text-lg leading-relaxed text-white">Planos a partir de R$ 89,90</p>
               <Button asChild size="lg" className="rounded-full text-base">
-                <button type="button" onClick={onSimular}>
-                  Simular meu plano
-                </button>
+                <Link to="/planos">Simular meu plano</Link>
               </Button>
             </div>
         </motion.div>
@@ -475,217 +471,15 @@ function FreeCta() {
   );
 }
 
-function SimuladorMeuPlano() {
-  const [area, setArea] = useState<string | null>(null);
-
-  const areas = [
-    { id: "prestadores", label: "Prestadores de serviços" },
-    { id: "profissionais", label: "Profissionais Liberais" },
-    { id: "pme", label: "Pequenas e médias empresas" },
-  ];
-
-  const plans = [
-    {
-      name: "MEI",
-      price: "89,90",
-      desc: "Ideal para microempreendedores individuais",
-      features: ["DAS mensal", "Declaração anual (DASN)", "Emissão de notas fiscais", "Suporte por chat"],
-      popular: false,
-    },
-    {
-      name: "Simples Nacional",
-      price: "199,00",
-      desc: "Para pequenas empresas em crescimento",
-      features: ["Tudo do MEI +", "Folha de pagamento", "Apuração de impostos", "Obrigações acessórias"],
-      popular: true,
-    },
-    {
-      name: "Lucro Presumido",
-      price: "399,00",
-      desc: "Para empresas com faturamento robusto",
-      features: ["Tudo do Simples +", "IRPJ / CSLL", "Planejamento tributário", "Consultor dedicado"],
-      popular: false,
-    },
-  ];
-
-  const platformFeatures = [
-    { title: "Gestão de cobrança", desc: "PIX, boleto, cartão e recorrência em uma operação centralizada." },
-    { title: "Integração bancária", desc: "Conecte contas e acompanhe conciliações com mais agilidade." },
-    { title: "Notas fiscais", desc: "Emita NFS-e, NF-e e NFC-e com apoio operacional contínuo." },
-    { title: "Contador virtual com IA", desc: "Respostas rápidas para dúvidas recorrentes e rotinas do dia a dia." },
-    { title: "Conciliação inteligente", desc: "Mais controle financeiro com menos trabalho manual." },
-    { title: "Segurança e LGPD", desc: "Proteção de dados e confiabilidade para a operação da empresa." },
-  ];
-
-  const services = serviceCategories.flatMap((cat) => cat.items);
-
-  const renderPlanSection = () => (
-    <section className="mt-10">
-      <div className="mb-6 text-center">
-        <h2 className="heading-display text-3xl md:text-4xl">Planos para sua empresa</h2>
-        <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
-          Informações de valores e o que é ofertado para cada plano.
-        </p>
-      </div>
-
-      <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-3">
-        {plans.map((p) => (
-          <Card
-            key={p.name}
-            className={`relative h-full rounded-2xl ${
-              p.popular ? "border-primary shadow-xl scale-[1.02]" : "border-border/50"
-            }`}
-          >
-            <CardContent className="space-y-5 p-7 flex flex-col h-full">
-              {p.popular && (
-                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 bg-primary text-primary-foreground text-xs font-semibold rounded-full">
-                  Mais Popular
-                </div>
-              )}
-
-              <div>
-                <h3 className="font-display font-bold text-xl">{p.name}</h3>
-                <p className="text-sm text-muted-foreground mt-1">{p.desc}</p>
-              </div>
-
-              <div className="flex items-baseline gap-1">
-                <span className="text-sm text-muted-foreground">R$</span>
-                <span className="heading-display text-5xl">{p.price}</span>
-              </div>
-
-              <ul className="space-y-2.5 pt-2">
-                {p.features.map((f) => (
-                  <li key={f} className="flex items-start gap-3 text-sm">
-                    <span className="mt-1 h-2 w-2 rounded-full bg-accent" />
-                    <span>{f}</span>
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-    </section>
-  );
-
-  return (
-    <section className="pt-10">
-      {!area ? (
-        <div className="mx-auto max-w-5xl text-center">
-          <h2 className="heading-display text-3xl md:text-4xl">Selecione sua área de atuação</h2>
-          <p className="mx-auto mt-3 max-w-2xl text-muted-foreground">
-            Isso ajuda a indicar o plano mais adequado para o seu contexto.
-          </p>
-
-          <div className="mt-8 mx-auto grid max-w-4xl gap-5 sm:grid-cols-3">
-            {areas.map((a) => (
-              <button
-                key={a.id}
-                type="button"
-                onClick={() => setArea(a.id)}
-                className={[
-                  "rounded-2xl border p-6 transition-colors text-left",
-                  "hover:border-primary/70 hover:bg-primary/5",
-                  area === a.id ? "border-primary bg-primary/5" : "border-border/50 bg-card",
-                ].join(" ")}
-              >
-                <p className="font-display text-lg font-semibold">{a.label}</p>
-                <p className="mt-2 text-sm text-muted-foreground">Clique para simular</p>
-              </button>
-            ))}
-          </div>
-        </div>
-      ) : (
-        <>
-          <div className="mx-auto max-w-5xl text-center">
-            <p className="text-sm text-muted-foreground">Área selecionada</p>
-            <h3 className="heading-display text-2xl md:text-3xl mt-1">{areas.find((x) => x.id === area)?.label}</h3>
-          </div>
-
-          {renderPlanSection()}
-
-          <section className="mt-14">
-            <div className="text-center">
-              <span className="mb-4 inline-flex rounded-full bg-primary/20 px-4 py-1.5 text-sm font-medium text-primary">
-                Plataforma Conta Web
-              </span>
-              <h2 className="heading-display text-3xl md:text-4xl">Tecnologia que trabalha por você</h2>
-              <p className="mx-auto mt-3 max-w-2xl text-muted-foreground/70">
-                Software completo para organizar cobranças, notas, finanças e o acompanhamento contábil em tempo real.
-              </p>
-            </div>
-
-            <div className="mt-8 mx-auto max-w-5xl grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {platformFeatures.map((feature, index) => (
-                <div
-                  key={feature.title}
-                  className="rounded-2xl border border-border/50 bg-card p-5 text-left"
-                >
-                  <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-full bg-primary/20 text-sm font-semibold text-primary">
-                    {String(index + 1).padStart(2, "0")}
-                  </div>
-                  <h3 className="font-display text-lg font-semibold">{feature.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{feature.desc}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section className="mt-14">
-            <div className="text-center mb-8">
-              <h2 className="heading-display text-3xl md:text-4xl">Nossos Serviços</h2>
-              <p className="mx-auto mt-3 max-w-2xl text-muted-foreground">
-                Confira os serviços disponíveis e veja informações completas para cada um.
-              </p>
-            </div>
-
-            <div className="mx-auto grid max-w-5xl gap-5 sm:grid-cols-2 md:grid-cols-4">
-              {services.map((service) => (
-                <Card key={service.title} className="h-full rounded-2xl border-border/50 transition-shadow hover:shadow-lg">
-                  <CardContent className="flex h-full flex-col space-y-3 p-6">
-                    <h3 className="font-display text-lg font-semibold leading-7">{service.title}</h3>
-                    <p className="text-sm leading-relaxed text-muted-foreground flex-1">
-                      {service.shortDesc ?? service.desc}
-                    </p>
-                    <div className="mt-auto pt-2">
-                      <Button asChild variant="outline" size="sm" className="rounded-full">
-                        <Link to={`/servicos#${serviceAnchor(service.title)}`}>Saiba mais</Link>
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </section>
-        </>
-      )}
-    </section>
-  );
-}
-
 export default function Home() {
-  const [simOpen, setSimOpen] = useState(false);
-
-  const handleSimular = () => setSimOpen(true);
-
   return (
-    <>
-      <main>
-        <Hero onSimular={handleSimular} />
-        <Metrics />
-        <ParaQuemContaWeb />
-        <FreeCta />
-        <FAQ />
-        <CtaBanner />
-      </main>
-
-      <Dialog open={simOpen} onOpenChange={setSimOpen}>
-        <DialogContent className="max-w-4xl p-0 overflow-hidden">
-          <div className="max-h-[90vh] overflow-y-auto p-6">
-            <SimuladorMeuPlano />
-          </div>
-        </DialogContent>
-      </Dialog>
-    </>
+    <main>
+      <Hero />
+      <Metrics />
+      <ParaQuemContaWeb />
+      <FreeCta />
+      <FAQ />
+      <CtaBanner />
+    </main>
   );
 }
