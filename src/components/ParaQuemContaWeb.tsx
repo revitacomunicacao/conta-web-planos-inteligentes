@@ -1,4 +1,4 @@
-import { Building2, Car, Users, Wrench } from "lucide-react";
+import { Building2, Users, Wrench } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import SectionWrapper from "@/components/SectionWrapper";
@@ -8,7 +8,6 @@ const items = [
   { icon: Wrench, label: "Prestadores de serviços" },
   { icon: Users, label: "Profissionais Liberais" },
   { icon: Building2, label: "Pequenas e médias empresas" },
-  { icon: Car, label: "Motorista de aplicativos" },
 ];
 
 export default function ParaQuemContaWeb() {
@@ -18,7 +17,7 @@ export default function ParaQuemContaWeb() {
         <h2 className="heading-display text-2xl md:text-3xl">Para quem é a Conta Web?</h2>
       </div>
 
-      <div className="mx-auto grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mx-auto grid max-w-5xl gap-6 sm:grid-cols-3">
         {items.map((s) => (
           <Link
             key={s.label}

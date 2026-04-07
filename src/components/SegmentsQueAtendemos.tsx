@@ -23,6 +23,7 @@ import {
   Users,
   Film,
   Building2,
+  Car,
   Wrench,
   Smile,
 } from "lucide-react";
@@ -62,7 +63,8 @@ const segments = [
   { icon: Landmark, label: "Holdings" },
   { icon: Store, label: "Comércios em Geral" },
   { icon: Sprout, label: "Produtores Rurais" },
-];
+  { icon: Car, label: "Motorista de aplicativos" },
+].sort((a, b) => a.label.localeCompare(b.label, "pt-BR"));
 
 export default function SegmentsQueAtendemos({
   compact = false,
