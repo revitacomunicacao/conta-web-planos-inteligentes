@@ -90,6 +90,10 @@ function CellValue({ value }: { value: boolean | string }) {
 }
 
 export default function Planos() {
+  const scrollToPlans = () => {
+    document.getElementById("planos-cards")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
     <main className="pt-20">
       {/* Hero */}
@@ -112,11 +116,11 @@ export default function Planos() {
       </section>
 
       <div>
-        <SegmentsQueAtendemos />
+        <SegmentsQueAtendemos onItemClick={scrollToPlans} />
       </div>
 
       {/* Plan cards */}
-      <SectionWrapper>
+      <SectionWrapper id="planos-cards">
         <motion.div
           variants={stagger}
           initial="hidden"

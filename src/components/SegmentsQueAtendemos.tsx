@@ -67,9 +67,11 @@ const segments = [
 export default function SegmentsQueAtendemos({
   compact = false,
   id,
+  onItemClick,
 }: {
   compact?: boolean;
   id?: string;
+  onItemClick?: (label: string) => void;
 }) {
   return (
     <SectionWrapper id={id} className={cn("bg-secondary/30", compact && "!py-10 md:!py-14")}>
@@ -86,10 +88,25 @@ export default function SegmentsQueAtendemos({
       >
         {segments.map((s) => (
           <motion.div key={s.label} variants={fadeUp} className="text-center">
-            <div className="w-16 h-16 rounded-2xl bg-card border flex items-center justify-center mx-auto mb-3 shadow-sm">
-              <s.icon className="w-7 h-7 text-primary" />
-            </div>
-            <p className="text-sm font-medium">{s.label}</p>
+            {onItemClick ? (
+              <button
+                type="button"
+                onClick={() => onItemClick(s.label)}
+                className="group w-full rounded-2xl p-2 outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              >
+                <div className="w-16 h-16 rounded-2xl bg-card border flex items-center justify-center mx-auto mb-3 shadow-sm transition-colors group-hover:bg-primary/5 group-hover:border-primary/40">
+                  <s.icon className="w-7 h-7 text-primary" />
+                </div>
+                <p className="text-sm font-medium">{s.label}</p>
+              </button>
+            ) : (
+              <>
+                <div className="w-16 h-16 rounded-2xl bg-card border flex items-center justify-center mx-auto mb-3 shadow-sm">
+                  <s.icon className="w-7 h-7 text-primary" />
+                </div>
+                <p className="text-sm font-medium">{s.label}</p>
+              </>
+            )}
           </motion.div>
         ))}
       </motion.div>
