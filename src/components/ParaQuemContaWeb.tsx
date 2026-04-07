@@ -1,4 +1,4 @@
-import { Building2, Users, Wrench } from "lucide-react";
+import { Building2, Car, Users, Wrench } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import SectionWrapper from "@/components/SectionWrapper";
@@ -8,6 +8,7 @@ const items = [
   { icon: Wrench, label: "Prestadores de serviços" },
   { icon: Users, label: "Profissionais Liberais" },
   { icon: Building2, label: "Pequenas e médias empresas" },
+  { icon: Car, label: "Motorista de aplicativos" },
 ];
 
 export default function ParaQuemContaWeb() {
@@ -17,14 +18,18 @@ export default function ParaQuemContaWeb() {
         <h2 className="heading-display text-2xl md:text-3xl">Para quem é a Conta Web?</h2>
       </div>
 
-      <div className="mx-auto grid max-w-5xl gap-6 sm:grid-cols-3">
+      <div className="mx-auto grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {items.map((s) => (
-          <div key={s.label} className="text-center">
-            <div className="w-16 h-16 rounded-2xl bg-card border flex items-center justify-center mx-auto mb-4 shadow-sm">
+          <Link
+            key={s.label}
+            to="/planos"
+            className="group text-center rounded-2xl p-2 outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          >
+            <div className="w-16 h-16 rounded-2xl bg-card border flex items-center justify-center mx-auto mb-4 shadow-sm transition-colors group-hover:bg-primary/5 group-hover:border-primary/40">
               <s.icon className="w-7 h-7 text-primary" />
             </div>
             <p className="text-sm font-medium">{s.label}</p>
-          </div>
+          </Link>
         ))}
       </div>
 
