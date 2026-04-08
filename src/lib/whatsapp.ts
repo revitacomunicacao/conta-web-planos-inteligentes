@@ -1,4 +1,4 @@
-const WHATSAPP_NUMBER = "5500000000000"; // Substituir pelo número real
+const WHATSAPP_NUMBER = "5534984348330";
 const DEFAULT_MESSAGE = "Olá! Gostaria de saber mais sobre os serviços da Conta Web.";
 
 export function getWhatsAppLink(message?: string) {

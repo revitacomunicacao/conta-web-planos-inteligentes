@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { MessageCircle, Instagram, Linkedin, Mail, Phone } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo conta web branco.png";
 import { getWhatsAppLink } from "@/lib/whatsapp";
 
 const footerLinks = [
@@ -39,7 +39,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Brand */}
           <div className="lg:col-span-2 space-y-4">
-            <img src={logo} alt="Conta Web" className="h-10 brightness-0 invert" />
+            <img src={logo} alt="Conta Web" className="w-[30%] brightness-0 invert" />
             <p className="text-sm text-background/60 max-w-xs leading-relaxed">
               Contabilidade digital com tecnologia de ponta. Simplifique a gestão da sua empresa com planos acessíveis e atendimento humanizado.
             </p>
@@ -71,18 +71,6 @@ export default function Footer() {
               </ul>
             </div>
           ))}
-        </div>
-
-        <div className="border-t border-background/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-background/40">© {new Date().getFullYear()} Conta Web. Todos os direitos reservados.</p>
-          <div className="flex items-center gap-4 text-xs text-background/40">
-            <a href="mailto:contato@contaweb.com.br" className="flex items-center gap-1 hover:text-background/60 transition-colors">
-              <Mail className="w-3 h-3" /> contato@contaweb.com.br
-            </a>
-            <a href="tel:+5500000000000" className="flex items-center gap-1 hover:text-background/60 transition-colors">
-              <Phone className="w-3 h-3" /> (00) 0000-0000
-            </a>
-          </div>
         </div>
       </div>
     </footer>

@@ -60,25 +60,6 @@ export default function Contato() {
               </CardContent>
             </Card>
           </motion.div>
-
-          {/* Contact info cards */}
-          <div className="grid sm:grid-cols-2 gap-4">
-            {contactInfo.filter(c => c.label !== "WhatsApp").map((c) => (
-              <a key={c.label} href={c.href} target={c.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer">
-                <Card className="rounded-2xl hover:shadow-lg transition-shadow border-border/50 h-full">
-                  <CardContent className="p-5 flex items-center gap-4">
-                    <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                      <c.icon className="w-5 h-5 text-primary" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">{c.label}</p>
-                      <p className="font-medium">{c.value}</p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </a>
-            ))}
-          </div>
         </div>
       </SectionWrapper>
     </main>
