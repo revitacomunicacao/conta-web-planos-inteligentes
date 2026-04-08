@@ -39,7 +39,7 @@ export default function Servicos() {
   }, [location.hash]);
 
   return (
-    <main className="pt-20">
+    <main className="pt-28 md:pt-32">
       {/* Hero */}
       <section className="relative overflow-hidden py-20 md:py-28">
         <div
@@ -76,7 +76,7 @@ export default function Servicos() {
               <motion.div key={item.title} variants={fadeUp}>
                 <Card
                   id={serviceAnchor(item.title)}
-                  className="h-full scroll-mt-24 rounded-2xl hover:shadow-lg transition-shadow border-border/50"
+                  className="h-full scroll-mt-32 rounded-2xl hover:shadow-lg transition-shadow border-border/50"
                 >
                   <CardContent className="p-6 space-y-3">
                     <h3 className="font-display font-semibold">{item.title}</h3>

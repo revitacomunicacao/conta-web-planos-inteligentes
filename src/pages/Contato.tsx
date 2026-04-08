@@ -16,7 +16,7 @@ const contactInfo = [
 
 export default function Contato() {
   return (
-    <main className="pt-20">
+    <main className="pt-28 md:pt-32">
       {/* Hero */}
       <section className="relative overflow-hidden py-20 md:py-28">
         <div

@@ -4,6 +4,7 @@ import { Menu, X, MessageCircle, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getWhatsAppLink } from "@/lib/whatsapp";
 import logo from "@/assets/logo.png";
+import { brandLogoImgClassName } from "@/lib/brandLogo";
 import { cn } from "@/lib/utils";
 
 const links = [
@@ -21,9 +22,9 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b">
-      <nav className="container flex items-center justify-between h-20 md:h-24">
-        <Link to="/" className="flex items-center gap-2">
-          <img src={logo} alt="Conta Web" className="h-16 md:h-20" />
+      <nav className="container flex items-center justify-between py-3 md:py-4">
+        <Link to="/" className="flex items-center gap-2 shrink-0">
+          <img src={logo} alt="Conta Web" className={brandLogoImgClassName} />
         </Link>
 
         {/* Desktop */}

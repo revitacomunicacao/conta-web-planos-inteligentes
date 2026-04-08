@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { MessageCircle, Instagram, Linkedin, Mail, Phone } from "lucide-react";
 import logo from "@/assets/logo conta web branco.png";
+import { brandLogoImgClassName } from "@/lib/brandLogo";
 import { getWhatsAppLink } from "@/lib/whatsapp";
 
 const footerLinks = [
@@ -39,7 +40,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Brand */}
           <div className="lg:col-span-2 space-y-4">
-            <img src={logo} alt="Conta Web" className="w-[30%] brightness-0 invert" />
+            <img src={logo} alt="Conta Web" className={brandLogoImgClassName} />
             <p className="text-sm text-background/60 max-w-xs leading-relaxed">
               Contabilidade digital com tecnologia de ponta. Simplifique a gestão da sua empresa com planos acessíveis e atendimento humanizado.
             </p>
