@@ -7,7 +7,8 @@ import SectionWrapper from "@/components/SectionWrapper";
 import { getWhatsAppLink } from "@/lib/whatsapp";
 import { services as categories } from "@/lib/services";
 import { serviceAnchor } from "@/lib/serviceAnchor";
-import { MessageCircle } from "lucide-react";
+import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
+import { cn } from "@/lib/utils";
 import topoInternasPhoto from "@/assets/TopoInternas.jpg.jpeg";
 
 const fadeUp = {
@@ -60,17 +61,20 @@ export default function Servicos() {
 
       {/* Categories */}
       {categories.map((cat, ci) => (
-        <SectionWrapper key={cat.title} className={ci % 2 === 1 ? "bg-secondary/30" : ""}>
-          <div className="mb-10">
+        <SectionWrapper
+          key={cat.title}
+          className={cn("py-12 md:py-16", ci % 2 === 1 ? "bg-secondary/30" : "")}
+        >
+          <div className="mb-5 md:mb-6">
             <h2 className="heading-display text-2xl md:text-3xl">{cat.title}</h2>
-            {cat.desc && <p className="text-muted-foreground mt-2">{cat.desc}</p>}
+            {cat.desc && <p className="text-muted-foreground mt-1.5">{cat.desc}</p>}
           </div>
           <motion.div
             variants={stagger}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4"
           >
             {cat.items.map((item) => (
               <motion.div key={item.title} variants={fadeUp}>
@@ -78,7 +82,7 @@ export default function Servicos() {
                   id={serviceAnchor(item.title)}
                   className="h-full scroll-mt-[var(--app-header-h,8rem)] rounded-2xl hover:shadow-lg transition-shadow border-border/50"
                 >
-                  <CardContent className="p-6 space-y-3">
+                  <CardContent className="p-4 md:p-5 space-y-2">
                     <h3 className="font-display font-semibold">{item.title}</h3>
                     <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
                   </CardContent>
@@ -90,7 +94,7 @@ export default function Servicos() {
       ))}
 
       {/* CTA */}
-      <SectionWrapper>
+      <SectionWrapper className="pt-4 pb-14 md:pt-6 md:pb-20">
         <div className="text-center bg-gradient-to-br from-primary to-sky-light rounded-3xl p-10 md:p-16 text-primary-foreground">
           <h2 className="heading-display text-3xl md:text-4xl mb-4">Precisa de algo específico?</h2>
           <p className="text-primary-foreground/80 max-w-lg mx-auto mb-8">
@@ -98,7 +102,7 @@ export default function Servicos() {
           </p>
           <Button asChild size="lg" className="rounded-full bg-background text-foreground hover:bg-background/90">
             <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer">
-              <MessageCircle className="w-5 h-5 mr-2" /> Falar com Contador
+              <WhatsAppIcon className="w-5 h-5 mr-2" /> Serviços adicionais
             </a>
           </Button>
         </div>

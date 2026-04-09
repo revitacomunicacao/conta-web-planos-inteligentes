@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { MessageCircle, Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import SectionWrapper from "@/components/SectionWrapper";
@@ -7,7 +8,7 @@ import { getWhatsAppLink } from "@/lib/whatsapp";
 import topoInternasPhoto from "@/assets/TopoInternas.jpg.jpeg";
 
 const contactInfo = [
-  { icon: MessageCircle, label: "WhatsApp", value: "(00) 00000-0000", href: getWhatsAppLink() },
+  { icon: WhatsAppIcon, label: "WhatsApp", value: "(00) 00000-0000", href: getWhatsAppLink() },
   { icon: Phone, label: "Telefone", value: "(00) 0000-0000", href: "tel:+5500000000000" },
   { icon: Mail, label: "E-mail", value: "contato@contaweb.com.br", href: "mailto:contato@contaweb.com.br" },
   { icon: MapPin, label: "Endereço", value: "Seu endereço aqui", href: "#" },
@@ -46,7 +47,7 @@ export default function Contato() {
             <Card className="rounded-2xl border-accent/30 bg-accent/5">
               <CardContent className="p-8 text-center space-y-4">
                 <div className="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center mx-auto">
-                  <MessageCircle className="w-8 h-8 text-accent" />
+                  <WhatsAppIcon className="w-8 h-8 text-accent" />
                 </div>
                 <h2 className="font-display font-bold text-2xl">Fale pelo WhatsApp</h2>
                 <p className="text-muted-foreground max-w-md mx-auto">
@@ -54,7 +55,7 @@ export default function Contato() {
                 </p>
                 <Button asChild size="lg" className="rounded-full bg-accent hover:bg-emerald-light text-accent-foreground">
                   <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer">
-                    <MessageCircle className="w-5 h-5 mr-2" /> Iniciar Conversa
+                    <WhatsAppIcon className="w-5 h-5 mr-2" /> Iniciar Conversa
                   </a>
                 </Button>
               </CardContent>

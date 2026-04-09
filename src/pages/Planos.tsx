@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { CheckCircle2, X, MessageCircle } from "lucide-react";
+import { CheckCircle2, X } from "lucide-react";
+import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import SectionWrapper from "@/components/SectionWrapper";
@@ -165,7 +166,7 @@ export default function Planos() {
                     className={`w-full rounded-full mt-4 ${p.popular ? "bg-primary hover:bg-sky-light" : "bg-foreground hover:bg-navy-light text-background"}`}
                   >
                     <a href={getWhatsAppPlanLink(p.name)} target="_blank" rel="noopener noreferrer">
-                      <MessageCircle className="w-4 h-4 mr-1" /> Contratar {p.name}
+                      <WhatsAppIcon className="w-4 h-4 mr-1" /> Contratar {p.name}
                     </a>
                   </Button>
                 </CardContent>
@@ -213,7 +214,7 @@ export default function Planos() {
           </p>
           <Button asChild size="lg" className="rounded-full gap-2">
             <a href={getWhatsAppLink("Olá! Preciso de ajuda para escolher o melhor plano.")} target="_blank" rel="noopener noreferrer">
-              <MessageCircle className="w-5 h-5" /> Falar com Contador
+              <WhatsAppIcon className="w-5 h-5" /> Falar com Contador
             </a>
           </Button>
         </div>

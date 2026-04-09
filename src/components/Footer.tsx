@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { MessageCircle, Instagram, Linkedin, Mail, Phone } from "lucide-react";
+import { Instagram, Linkedin } from "lucide-react";
+import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import logo from "@/assets/logo conta web branco.png";
 import { brandLogoImgClassName } from "@/lib/brandLogo";
 import { getWhatsAppLink } from "@/lib/whatsapp";
@@ -52,7 +53,7 @@ export default function Footer() {
                 <Linkedin className="w-4 h-4" />
               </a>
               <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-background/10 hover:bg-background/20 transition-colors" aria-label="WhatsApp">
-                <MessageCircle className="w-4 h-4" />
+                <WhatsAppIcon className="w-4 h-4" />
               </a>
             </div>
           </div>

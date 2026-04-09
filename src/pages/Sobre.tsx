@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import SectionWrapper from "@/components/SectionWrapper";
 import { getWhatsAppLink } from "@/lib/whatsapp";
-import { MessageCircle } from "lucide-react";
+import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import SegmentsQueAtendemos from "@/components/SegmentsQueAtendemos";
 import topoInternasPhoto from "@/assets/TopoInternas.jpg.jpeg";
 
@@ -45,7 +45,7 @@ export default function Sobre() {
           <div className="flex flex-wrap gap-3 justify-center">
             <Button asChild size="lg" className="rounded-full bg-background text-foreground hover:bg-background/90">
               <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer">
-                <MessageCircle className="w-5 h-5 mr-2" /> Falar Conosco
+                <WhatsAppIcon className="w-5 h-5 mr-2" /> Falar Conosco
               </a>
             </Button>
           </div>

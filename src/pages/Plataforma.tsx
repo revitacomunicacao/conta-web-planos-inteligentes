@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
 import {
   CreditCard, Landmark, Receipt, Bot, RefreshCw, Shield, BarChart3, Plug,
-  Smartphone, Globe, QrCode, ArrowRight, CheckCircle2, MessageCircle
+  Smartphone, Globe, QrCode, ArrowRight, CheckCircle2
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import SectionWrapper from "@/components/SectionWrapper";
+import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { getWhatsAppLink } from "@/lib/whatsapp";
 import topoInternasPhoto from "@/assets/TopoInternas.jpg.jpeg";
 
@@ -189,7 +190,7 @@ export default function Plataforma() {
           </p>
           <Button asChild size="lg" className="rounded-full gap-2">
             <a href={getWhatsAppLink("Olá! Gostaria de agendar uma demonstração da plataforma Conta Web.")} target="_blank" rel="noopener noreferrer">
-              <MessageCircle className="w-5 h-5" /> Agendar Demonstração
+              <WhatsAppIcon className="w-5 h-5" /> Agendar Demonstração
             </a>
           </Button>
         </div>

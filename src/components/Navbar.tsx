@@ -1,7 +1,8 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, MessageCircle, User } from "lucide-react";
+import { Menu, X, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { getWhatsAppLink } from "@/lib/whatsapp";
 import logo from "@/assets/logo.png";
 import { brandLogoImgClassName } from "@/lib/brandLogo";
@@ -79,8 +80,14 @@ export default function Navbar() {
           </Button>
           <Button asChild className="rounded-full gap-2 bg-accent hover:bg-emerald-light text-accent-foreground">
             <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer">
-              <MessageCircle className="w-4 h-4" />
+              <WhatsAppIcon className="w-4 h-4" />
               Falar com Contador
+            </a>
+          </Button>
+          <Button asChild className="rounded-full gap-2 bg-accent hover:bg-emerald-light text-accent-foreground">
+            <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer">
+              <WhatsAppIcon className="w-4 h-4" />
+              Serviços adicionais
             </a>
           </Button>
         </div>
@@ -124,8 +131,16 @@ export default function Navbar() {
             <li className="mt-2 px-3">
               <Button asChild className="w-full rounded-full gap-2 bg-accent hover:bg-emerald-light text-accent-foreground">
                 <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer">
-                  <MessageCircle className="w-4 h-4" />
+                  <WhatsAppIcon className="w-4 h-4" />
                   Falar com Contador
+                </a>
+              </Button>
+            </li>
+            <li className="mt-2 px-3">
+              <Button asChild className="w-full rounded-full gap-2 bg-accent hover:bg-emerald-light text-accent-foreground">
+                <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer">
+                  <WhatsAppIcon className="w-4 h-4" />
+                  Serviços adicionais
                 </a>
               </Button>
             </li>
