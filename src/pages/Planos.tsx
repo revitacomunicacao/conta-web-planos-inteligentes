@@ -95,7 +95,7 @@ export default function Planos() {
   };
 
   return (
-    <main className="pt-28 md:pt-32">
+    <main>
       {/* Hero */}
       <section className="relative overflow-hidden py-20 md:py-28">
         <div

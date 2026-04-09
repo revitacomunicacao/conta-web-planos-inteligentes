@@ -30,7 +30,7 @@ const fadeUp = {
 
 function Hero() {
   return (
-    <section className="relative md:mt-20 overflow-hidden pt-28 pb-20 md:pt-36 md:pb-28">
+    <section className="relative overflow-hidden pt-28 pb-20 md:pt-36 md:pb-28">
       {/* Background image (substitui a coluna direita) */}
       <div
         className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-90"

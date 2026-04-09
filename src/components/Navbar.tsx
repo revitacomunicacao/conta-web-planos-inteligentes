@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, MessageCircle, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -19,9 +19,31 @@ const links = [
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const { pathname } = useLocation();
+  const headerRef = useRef<HTMLElement>(null);
+
+  useLayoutEffect(() => {
+    const el = headerRef.current;
+    if (!el) return;
+
+    const setVar = () => {
+      const h = el.offsetHeight;
+      document.documentElement.style.setProperty("--app-header-h", `${h}px`);
+    };
+
+    setVar();
+
+    const ro = new ResizeObserver(() => setVar());
+    ro.observe(el);
+    window.addEventListener("resize", setVar);
+
+    return () => {
+      window.removeEventListener("resize", setVar);
+      ro.disconnect();
+    };
+  }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b">
+    <header ref={headerRef} className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b">
       <nav className="container flex items-center justify-between py-3 md:py-4">
         <Link to="/" className="flex items-center gap-2 shrink-0">
           <img src={logo} alt="Conta Web" className={brandLogoImgClassName} />

@@ -8,7 +8,7 @@ import topoInternasPhoto from "@/assets/TopoInternas.jpg.jpeg";
 
 export default function Sobre() {
   return (
-    <main className="pt-28 md:pt-32">
+    <main>
       {/* Hero */}
       <section className="relative overflow-hidden py-20">
         <div

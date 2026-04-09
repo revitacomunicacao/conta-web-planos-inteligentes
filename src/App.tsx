@@ -25,15 +25,17 @@ const App = () => (
       <BrowserRouter basename="/projetos/contaweb">
         <ScrollToTop />
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/servicos" element={<Servicos />} />
-          <Route path="/plataforma" element={<Plataforma />} />
-          <Route path="/planos" element={<Planos />} />
-          <Route path="/sobre" element={<Sobre />} />
-          <Route path="/contato" element={<Contato />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <main className="pt-[var(--app-header-h,0px)]">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/servicos" element={<Servicos />} />
+            <Route path="/plataforma" element={<Plataforma />} />
+            <Route path="/planos" element={<Planos />} />
+            <Route path="/sobre" element={<Sobre />} />
+            <Route path="/contato" element={<Contato />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </main>
         <Footer />
         <WhatsAppFab />
       </BrowserRouter>
