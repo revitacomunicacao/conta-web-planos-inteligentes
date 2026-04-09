@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
-import { CheckCircle2, X } from "lucide-react";
+import { CheckCircle2, X, User } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import SectionWrapper from "@/components/SectionWrapper";
-import { getWhatsAppPlanLink, getWhatsAppLink } from "@/lib/whatsapp";
+import { getWhatsAppLink } from "@/lib/whatsapp";
+
+const CONTAWEB_CADASTRO_URL = "https://contaweb.osayk.digital/#/cadastro";
 import topoInternasPhoto from "@/assets/TopoInternas.jpg.jpeg";
 import SegmentsQueAtendemos from "@/components/SegmentsQueAtendemos";
 
@@ -165,8 +167,8 @@ export default function Planos() {
                     asChild
                     className={`w-full rounded-full mt-4 ${p.popular ? "bg-primary hover:bg-sky-light" : "bg-foreground hover:bg-navy-light text-background"}`}
                   >
-                    <a href={getWhatsAppPlanLink(p.name)} target="_blank" rel="noopener noreferrer">
-                      <WhatsAppIcon className="w-4 h-4 mr-1" /> Contratar {p.name}
+                    <a href={CONTAWEB_CADASTRO_URL} target="_blank" rel="noopener noreferrer">
+                      <User className="w-4 h-4 mr-1" /> Contratar {p.name}
                     </a>
                   </Button>
                 </CardContent>
