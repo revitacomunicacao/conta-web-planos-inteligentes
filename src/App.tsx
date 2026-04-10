@@ -22,7 +22,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter basename="/projetos/contaweb">
+      <BrowserRouter>
         <ScrollToTop />
         <Navbar />
         <main className="pt-[var(--app-header-h,0px)]">

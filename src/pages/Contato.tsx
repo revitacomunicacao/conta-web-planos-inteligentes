@@ -10,7 +10,7 @@ import topoInternasPhoto from "@/assets/TopoInternas.jpg.jpeg";
 const contactInfo = [
   { icon: WhatsAppIcon, label: "WhatsApp", value: "(00) 00000-0000", href: getWhatsAppLink() },
   { icon: Phone, label: "Telefone", value: "(00) 0000-0000", href: "tel:+5500000000000" },
-  { icon: Mail, label: "E-mail", value: "contato@contaweb.com.br", href: "mailto:contato@contaweb.com.br" },
+  { icon: Mail, label: "E-mail", value: "contato@contaweb.net.br", href: "mailto:contato@contaweb.net.br" },
   { icon: MapPin, label: "Endereço", value: "Seu endereço aqui", href: "#" },
   { icon: Clock, label: "Horário", value: "Seg-Sex: 8h às 18h", href: "#" },
 ];

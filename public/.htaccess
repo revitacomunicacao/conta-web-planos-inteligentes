@@ -1,10 +1,9 @@
-# SPA (React Router): rotas diretas precisam cair no index.html
-# Coloque este arquivo na pasta publicada (ex.: projetos/contaweb/) junto com index.html.
+# SPA (React Router): rotas diretas servem index.html (documento raiz do domínio)
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  RewriteBase /projetos/contaweb/
+  RewriteBase /
   RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule . index.html [L]
+  RewriteRule . /index.html [L]
 </IfModule>

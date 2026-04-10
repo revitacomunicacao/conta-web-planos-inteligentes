@@ -109,7 +109,7 @@ export default function Plataforma() {
               <div className="bg-background/5 border border-background/10 rounded-2xl p-6 space-y-4">
                 <div className="flex items-center gap-2 text-xs text-background/40">
                   <Globe className="w-4 h-4" />
-                  app.contaweb.com.br
+                  app.contaweb.net.br
                 </div>
                 <div className="grid grid-cols-2 gap-3">
                   <div className="bg-primary/20 rounded-xl p-4">
