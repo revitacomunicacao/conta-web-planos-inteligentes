@@ -17,6 +17,9 @@ import { services as serviceCategories } from "@/lib/services";
 import { serviceAnchor } from "@/lib/serviceAnchor";
 import ParaQuemContaWeb from "@/components/ParaQuemContaWeb";
 import { CheckCircle2 } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import { fetchHomePage, normalizeHomeContent } from "@/lib/homePageApi";
+import { getLucideIcon } from "@/lib/lucideIconRegistry";
 
 const stagger = {
   hidden: {},
@@ -28,7 +31,22 @@ const fadeUp = {
   show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
-function Hero() {
+function Hero({
+  card,
+  texto1,
+  tituloEmBranco,
+  tituloEmAzul,
+  texto2,
+  botao,
+}: {
+  card: string;
+  texto1: string;
+  tituloEmBranco: string;
+  tituloEmAzul: string;
+  texto2: string;
+  botao: { texto: string; link: string } | null;
+}) {
+  const texto1Lines = (texto1 ?? "").split(/\r?\n/);
   return (
     <section className="relative overflow-hidden pt-28 pb-20 md:pt-36 md:pb-28">
       {/* Background image (substitui a coluna direita) */}
@@ -45,19 +63,26 @@ function Hero() {
           className="mx-auto w-full max-w-2xl space-y-6"
         >
             <span className="inline-flex rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
-            Contabilidade online simples para pagar menos impostos com segurança
+            {card}
             </span>
             <p className="max-w-lg text-lg leading-relaxed text-white">
-              Cuidamos de tudo para <br /> sua empresa com atendimento rápido e sem burocracia
+              {texto1Lines.map((line, idx) => (
+                <span key={idx}>
+                  {line}
+                  {idx < texto1Lines.length - 1 ? <br /> : null}
+                </span>
+              ))}
             </p>
             <h1 className="text-white heading-display text-4xl !leading-tight md:text-5xl lg:text-6xl">
-              Sua contabilidade no <span className="text-primary">piloto automático</span>
+              {tituloEmBranco} <span className="text-primary">{tituloEmAzul}</span>
             </h1>
             <div className="space-y-4 pt-2">
-              <p className="text-lg leading-relaxed text-white">Planos a partir de R$ 89,90</p>
-              <Button asChild size="lg" className="rounded-full text-base">
-                <Link to="/planos">Simular meu plano</Link>
-              </Button>
+              <p className="text-lg leading-relaxed text-white">{texto2}</p>
+              {botao ? (
+                <Button asChild size="lg" className="rounded-full text-base">
+                  <a href={botao.link}>{botao.texto}</a>
+                </Button>
+              ) : null}
             </div>
         </motion.div>
       </div>
@@ -65,14 +90,7 @@ function Hero() {
   );
 }
 
-function Metrics() {
-  const items = [
-    { value: "70%", label: "menos tempo com burocracia" },
-    { value: "5.500+", label: "municípios com NF-e" },
-    { value: "20+", label: "bancos integrados" },
-    { value: "24h", label: "suporte disponível" },
-  ];
-
+function Metrics({ items }: { items: { value: string; label: string }[] }) {
   return (
     <section className="border-y bg-secondary/50">
       <div className="container py-10">
@@ -333,39 +351,12 @@ function PlansPreview() {
   );
 }
 
-function FAQ() {
-  const faqs = [
-    {
-      q: "Como faço a transição do meu contador atual para a Conta Web?",
-      a: "Você deverá entrar em contato com o seu contador atual para comunicar formalmente o encerramento do vínculo contratual, bem como a sua intenção de migrar para um serviço de contabilidade online. É importante solicitar que ele providencie, dentro do prazo acordado, a entrega de toda a documentação da empresa, incluindo documentos legais e societários, livros fiscais e contábeis, folhas de pagamento, obrigações acessórias e demais registros pertinentes. Caso surja qualquer dúvida durante esse processo, nossa equipe de contadores online estará à disposição para oferecer todo o suporte necessário. Observação: Caso a migração ocorra ao longo do exercício, solicite ao contador anterior que realize o encerramento parcial das informações contábeis, com a devida transmissão das obrigações acessórias, como SPED ECD (caso houver), garantindo a correta transferência da responsabilidade técnica.",
-    },
-    {
-      q: "Há necessidade de encaminhar toda a documentação física entregue pelo contador anterior para a Conta Web?",
-      a: "Não se preocupe, não será necessário enviar a documentação física. Esses documentos devem permanecer sob sua guarda na empresa, conforme a legislação. Para facilitar o processo, solicitaremos apenas o envio de alguns documentos de forma digital (em PDF), diretamente pelo seu Ambiente Seguro em nosso portal. Com isso, conseguimos dar continuidade aos serviços com agilidade e segurança. Fique tranquilo, nossa equipe estará ao seu lado em cada etapa, orientando tudo o que for necessário para uma transição simples e sem burocracia.",
-    },
-    {
-      q: "Como é feito o envio de documentos e a comunicação entre minha empresa e a Conta Web no dia a dia?",
-      a: "A comunicação entre a sua empresa e a nossa contabilidade online será realizada de forma prática e ágil, por meio do Ambiente Seguro do cliente ou via WhatsApp, garantindo rapidez no atendimento e proximidade no dia a dia. Já o envio e recebimento de documentos ocorrerão de forma totalmente digital, através do Ambiente Seguro em nosso portal, utilizando arquivos em PDF, XML e outros formatos necessários, assegurando organização e segurança das informações.",
-    },
-    {
-      q: "Quando posso começar a aproveitar os serviços da Conta Web na minha empresa?",
-      a: "Você pode iniciar sua contabilidade online com a Conta Web de forma imediata! Assim que formalizarmos a contratação e recebermos as informações iniciais da sua empresa, nossa equipe já começa o processo de transição. Nosso objetivo é garantir uma migração rápida, organizada e sem impacto na rotina do seu negócio, cuidando de toda a parte burocrática para você. Quanto antes iniciarmos, mais rápido conseguimos estruturar sua contabilidade e gerar informações estratégicas para a sua empresa.",
-    },
-    {
-      q: "É possível estruturar um plano exclusivo de contabilidade online e assessoria, totalmente adaptado às necessidades da minha empresa, além dos serviços padrão do orçamento?",
-      a: "Sim! Na Conta Web, entendemos que cada empresa possui necessidades específicas, por isso oferecemos a possibilidade de estruturar um plano totalmente personalizado de contabilidade online e assessoramento. Além dos pacotes padrão, podemos adaptar nossos serviços de acordo com a realidade, o porte e os objetivos do seu negócio, garantindo uma solução mais estratégica, eficiente e alinhada ao que você realmente precisa. Nossa equipe fará uma análise do seu cenário para propor a melhor configuração de serviços, sempre buscando otimizar custos e potencializar resultados. Fale com um de nossos especialistas e descubra como podemos montar um plano sob medida para a sua empresa.",
-    },
-    {
-      q: "Caso eu não me identifique com o modelo de contabilidade online, como funciona o processo de cancelamento dos serviços?",
-      a: "Entendemos que a adaptação pode levar um tempo e estamos à disposição para te ajudar no que for necessário. Caso ainda opte pelo cancelamento, basta formalizar a solicitação com nossa equipe. Cuidaremos de todo o processo de forma rápida, segura e sem impacto para sua empresa.",
-    },
-  ];
-
+function FAQ({ title, faqs }: { title: string; faqs: { pergunta: string; resposta: string }[] }) {
   return (
     <SectionWrapper className="bg-secondary/30">
       <div className="mx-auto max-w-3xl">
         <div className="mb-10 text-center">
-          <h2 className="heading-display text-3xl md:text-4xl">Perguntas Frequentes</h2>
+          <h2 className="heading-display text-3xl md:text-4xl">{title}</h2>
         </div>
         <Accordion type="single" collapsible className="space-y-3">
           {faqs.map((faq, index) => (
@@ -375,10 +366,10 @@ function FAQ() {
               className="rounded-xl border bg-card px-5"
             >
               <AccordionTrigger className="text-left text-sm font-medium hover:no-underline md:text-base">
-                {faq.q}
+                {faq.pergunta}
               </AccordionTrigger>
               <AccordionContent className="text-sm leading-relaxed text-muted-foreground">
-                {faq.a}
+                {faq.resposta}
               </AccordionContent>
             </AccordionItem>
           ))}
@@ -388,83 +379,84 @@ function FAQ() {
   );
 }
 
-function CtaBanner() {
+function CtaBanner({ title, descricao, button }: { title: string; descricao: string; button: { texto: string; link: string } | null }) {
   return (
     <SectionWrapper>
       <div className="rounded-3xl bg-gradient-to-br from-primary to-sky-light p-10 text-center text-primary-foreground md:p-16">
         <h2 className="heading-display mb-4 text-3xl md:text-4xl">
-          Pronto para simplificar sua contabilidade?
+          {title}
         </h2>
         <p className="mx-auto mb-8 max-w-lg text-primary-foreground/80">
-          Fale com um de nossos contadores e descubra o plano ideal para sua empresa.
+          {descricao}
         </p>
-        <Button
-          asChild
-          size="lg"
-          className="rounded-full bg-background text-base text-foreground hover:bg-background/90"
-        >
-          <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer">
-            Falar com Contador
-          </a>
-        </Button>
-      </div>
-    </SectionWrapper>
-  );
-}
-
-function FreeCta() {
-  return (
-    <SectionWrapper>
-      <div className="rounded-3xl bg-gradient-to-br from-primary to-sky-light p-10 text-center text-primary-foreground md:p-16">
-        <h2 className="heading-display mb-4 text-3xl md:text-4xl">Conheça os planos para abrir sua empresa</h2>
-
-        <div className="mx-auto mt-8 grid max-w-3xl gap-6 text-left">
-          <div className="flex items-start gap-3">
-            <CheckCircle2 className="w-6 h-6 text-background mt-0.5 shrink-0" />
-            <div>
-              <p className="font-display font-bold text-lg">Abertura grátis</p>
-              <p className="text-primary-foreground/85">Na contratação do plano com permanência mínima de 12 meses</p>
-            </div>
-          </div>
-
-          <div className="flex items-start gap-3">
-            <CheckCircle2 className="w-6 h-6 text-background mt-0.5 shrink-0" />
-            <div>
-              <p className="font-display font-bold text-lg">Abertura avulsa</p>
-              <p className="text-primary-foreground/85">R$ 990,00 — sem fidelidade</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-10 grid gap-3 sm:grid-cols-2 justify-center max-w-3xl mx-auto">
+        {button ? (
           <Button
             asChild
             size="lg"
             className="rounded-full bg-background text-base text-foreground hover:bg-background/90"
           >
-            <a
-              href={getWhatsAppLink("Olá! Quero abrir minha empresa com a Conta Web. Pode me explicar como funciona a abertura grátis e a abertura avulsa?")}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Abrir empresa
+            <a href={button.link} target="_blank" rel="noopener noreferrer">
+              {button.texto}
             </a>
           </Button>
+        ) : null}
+      </div>
+    </SectionWrapper>
+  );
+}
 
-          <Button
-            asChild
-            size="lg"
-            variant="outline"
-            className="rounded-full text-base text-foreground border-background/40 hover:text-accent-foreground"
-          >
-            <a
-              href={getWhatsAppLink("Olá! Quero falar com um contador sobre abrir minha empresa.")}
-              target="_blank"
-              rel="noopener noreferrer"
+function FreeCta({
+  title,
+  aberturas,
+  botao1,
+  botao2,
+}: {
+  title: string;
+  aberturas: { iconKey: string | null; titulo: string; descricao: string }[];
+  botao1: { texto: string; link: string } | null;
+  botao2: { texto: string; link: string } | null;
+}) {
+  return (
+    <SectionWrapper>
+      <div className="rounded-3xl bg-gradient-to-br from-primary to-sky-light p-10 text-center text-primary-foreground md:p-16">
+        <h2 className="heading-display mb-4 text-3xl md:text-4xl">{title}</h2>
+
+        <div className="mx-auto mt-8 grid max-w-3xl gap-6 text-left">
+          {aberturas.map((a) => {
+            const Icon = getLucideIcon(a.iconKey) ?? CheckCircle2;
+            return (
+              <div key={a.titulo} className="flex items-start gap-3">
+                <Icon className="w-6 h-6 text-background mt-0.5 shrink-0" />
+                <div>
+                  <p className="font-display font-bold text-lg">{a.titulo}</p>
+                  <p className="text-primary-foreground/85">{a.descricao}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="mt-10 grid gap-3 sm:grid-cols-2 justify-center max-w-3xl mx-auto">
+          {botao1 ? (
+            <Button asChild size="lg" className="rounded-full bg-background text-base text-foreground hover:bg-background/90">
+              <a href={botao1.link} target="_blank" rel="noopener noreferrer">
+                {botao1.texto}
+              </a>
+            </Button>
+          ) : null}
+
+          {botao2 ? (
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="rounded-full text-base text-foreground border-background/40 hover:text-accent-foreground"
             >
-              Falar com um contador
-            </a>
-          </Button>
+              <a href={botao2.link} target="_blank" rel="noopener noreferrer">
+                {botao2.texto}
+              </a>
+            </Button>
+          ) : null}
         </div>
       </div>
     </SectionWrapper>
@@ -472,14 +464,62 @@ function FreeCta() {
 }
 
 export default function Home() {
+  const homeQuery = useQuery({
+    queryKey: ["page", "home"],
+    queryFn: fetchHomePage,
+    staleTime: 60_000,
+    retry: 1,
+  });
+
+  const content = homeQuery.data ? normalizeHomeContent(homeQuery.data) : null;
+
   return (
     <main>
-      <Hero />
-      <Metrics />
-      <ParaQuemContaWeb />
-      <FreeCta />
-      <FAQ />
-      <CtaBanner />
+      {content ? (
+        <>
+          <Hero
+            card={content.hero.card}
+            texto1={content.hero.texto1}
+            tituloEmBranco={content.hero.tituloEmBranco}
+            tituloEmAzul={content.hero.tituloEmAzul}
+            texto2={content.hero.texto2}
+            botao={content.hero.botao}
+          />
+          <Metrics items={content.metrics} />
+          <ParaQuemContaWeb
+            title={content.paraQuem.title}
+            items={content.paraQuem.items}
+            button={content.paraQuem.button}
+          />
+          <FreeCta
+            title={content.conhecaOsPlanos.title}
+            aberturas={content.conhecaOsPlanos.aberturas}
+            botao1={content.conhecaOsPlanos.botao1}
+            botao2={content.conhecaOsPlanos.botao2}
+          />
+          <FAQ title={content.faq.title} faqs={content.faq.items} />
+          <CtaBanner title={content.cta.title} descricao={content.cta.descricao} button={content.cta.botao} />
+        </>
+      ) : homeQuery.isLoading ? (
+        <SectionWrapper className="py-16">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-muted-foreground">Carregando conteúdo…</p>
+          </div>
+        </SectionWrapper>
+      ) : (
+        <SectionWrapper className="py-16">
+          <div className="mx-auto max-w-2xl text-center space-y-4">
+            <p className="text-muted-foreground">
+              Não foi possível carregar o conteúdo agora. Tente novamente em instantes.
+            </p>
+            <Button asChild className="rounded-full">
+              <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer">
+                Falar com um contador
+              </a>
+            </Button>
+          </div>
+        </SectionWrapper>
+      )}
     </main>
   );
 }
