@@ -50,8 +50,8 @@ export default function Navbar() {
           <img src={logo} alt="Conta Web" className={brandLogoImgClassName} />
         </Link>
 
-        {/* Desktop */}
-        <ul className="hidden md:flex items-center gap-1">
+        {/* Desktop (somente em telas >= xl para evitar overflow em tablet) */}
+        <ul className="hidden xl:flex items-center gap-1">
           {links.map((l) => (
             <li key={l.to}>
               <Link
@@ -67,7 +67,7 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden xl:flex items-center gap-3">
           <Button asChild className="rounded-full gap-2">
             <a
               href="https://contaweb.osayk.digital/#/cadastro"
@@ -93,14 +93,14 @@ export default function Navbar() {
         </div>
 
         {/* Mobile toggle */}
-        <button className="md:hidden p-2" onClick={() => setOpen(!open)} aria-label="Menu">
+        <button className="xl:hidden p-2" onClick={() => setOpen(!open)} aria-label="Menu">
           {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </nav>
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-background border-b pb-4">
+        <div className="xl:hidden bg-background border-b pb-4">
           <ul className="container flex flex-col gap-1">
             {links.map((l) => (
               <li key={l.to}>

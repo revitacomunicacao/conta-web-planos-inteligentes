@@ -25,7 +25,7 @@ const compareFeatures = [
   { name: "Plataforma Conta Web", mei: "Básico", simples: "Completo", presumido: "Completo" },
   { name: "Apuração de Impostos", mei: true, simples: true, presumido: true },
   { name: "Obrigações Acessórias", mei: "Parcial", simples: true, presumido: true },
-  { name: "Folha de Pagamento", mei: false, simples: "Até 3 func.", presumido: "Até 10 func." },
+  { name: "Folha de Pagamento", mei: false, simples: "A combinar", presumido: "A combinar" },
   { name: "eSocial / DCTFWEB", mei: false, simples: true, presumido: true },
   { name: "Consultoria Mensal", mei: false, simples: true, presumido: true },
   { name: "Planejamento Tributário", mei: false, simples: false, presumido: true },
