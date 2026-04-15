@@ -45,6 +45,7 @@ export default function Footer() {
             <p className="text-sm text-background/60 max-w-xs leading-relaxed">
               Contabilidade digital com tecnologia de ponta. Simplifique a gestão da sua empresa com planos acessíveis e atendimento humanizado.
             </p>
+            <p className="text-sm text-background/60">CRC MG-020273/O-3</p>
             <div className="flex gap-3 pt-2">
               <a href="#" className="p-2 rounded-full bg-background/10 hover:bg-background/20 transition-colors" aria-label="Instagram">
                 <Instagram className="w-4 h-4" />
