@@ -70,7 +70,7 @@ export default function Navbar() {
         <div className="hidden xl:flex items-center gap-3">
           <Button asChild className="rounded-full gap-2">
             <a
-              href="https://contaweb.osayk.digital/#/cadastro"
+              href="https://contaweb.osayk.com.br/#/login"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -119,7 +119,7 @@ export default function Navbar() {
             <li className="mt-2 px-3">
               <Button asChild className="w-full rounded-full gap-2">
                 <a
-                  href="https://contaweb.osayk.digital/#/cadastro"
+                  href="https://contaweb.osayk.com.br/#/login"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
