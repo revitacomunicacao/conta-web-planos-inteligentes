@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 import topoInternasPhoto from "@/assets/TopoInternas.jpg.jpeg";
 import { useQuery } from "@tanstack/react-query";
 import { fetchServicosPage, normalizeServicosContent } from "@/lib/servicosPageApi";
+import { trackLead } from "@/lib/fbq";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -105,7 +106,7 @@ export default function Servicos() {
               <p className="text-primary-foreground/80 max-w-lg mx-auto mb-8">{content.cta.descricao}</p>
               {content.cta.botao ? (
                 <Button asChild size="lg" className="rounded-full bg-background text-foreground hover:bg-background/90">
-                  <a href={content.cta.botao.link} target="_blank" rel="noopener noreferrer">
+                  <a href={content.cta.botao.link} target="_blank" rel="noopener noreferrer" onClick={trackLead}>
                     <WhatsAppIcon className="w-5 h-5 mr-2" /> {content.cta.botao.texto}
                   </a>
                 </Button>
@@ -126,7 +127,7 @@ export default function Servicos() {
               Não foi possível carregar o conteúdo agora. Tente novamente em instantes.
             </p>
             <Button asChild className="rounded-full">
-              <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer">
+              <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" onClick={trackLead}>
                 Falar com um contador
               </a>
             </Button>

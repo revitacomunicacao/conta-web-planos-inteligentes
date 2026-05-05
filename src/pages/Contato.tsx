@@ -8,6 +8,7 @@ import { getWhatsAppLink } from "@/lib/whatsapp";
 import topoInternasPhoto from "@/assets/TopoInternas.jpg.jpeg";
 import { useQuery } from "@tanstack/react-query";
 import { fetchContatoPage, normalizeContatoContent } from "@/lib/contatoPageApi";
+import { trackLead } from "@/lib/fbq";
 
 const contactInfo = [
   { icon: WhatsAppIcon, label: "WhatsApp", value: "(00) 00000-0000", href: getWhatsAppLink() },
@@ -63,7 +64,7 @@ export default function Contato() {
                         size="lg"
                         className="rounded-full bg-accent hover:bg-emerald-light text-accent-foreground"
                       >
-                        <a href={content.cta.botao.link} target="_blank" rel="noopener noreferrer">
+                        <a href={content.cta.botao.link} target="_blank" rel="noopener noreferrer" onClick={trackLead}>
                           <WhatsAppIcon className="w-5 h-5 mr-2" /> {content.cta.botao.texto}
                         </a>
                       </Button>
@@ -87,7 +88,7 @@ export default function Contato() {
               Não foi possível carregar o conteúdo agora. Tente novamente em instantes.
             </p>
             <Button asChild className="rounded-full">
-              <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer">
+              <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" onClick={trackLead}>
                 Falar com um contador
               </a>
             </Button>

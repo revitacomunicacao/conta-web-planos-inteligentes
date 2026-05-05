@@ -10,6 +10,7 @@ import topoInternasPhoto from "@/assets/TopoInternas.jpg.jpeg";
 import SegmentsQueAtendemos from "@/components/SegmentsQueAtendemos";
 import { useQuery } from "@tanstack/react-query";
 import { fetchPlanosPage, normalizePlanosContent } from "@/lib/planosPageApi";
+import { trackLead } from "@/lib/fbq";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -139,7 +140,7 @@ export default function Planos() {
                                 : "bg-foreground hover:bg-navy-light text-background"
                             }`}
                           >
-                            <a href={ctaHref} target="_blank" rel="noopener noreferrer">
+                            <a href={ctaHref} target="_blank" rel="noopener noreferrer" onClick={trackLead}>
                               <User className="w-4 h-4 mr-1" /> {ctaLabel}
                             </a>
                           </Button>
@@ -194,7 +195,7 @@ export default function Planos() {
               <p className="text-muted-foreground max-w-lg mx-auto mb-8">{content.cta.descricao}</p>
               {content.cta.botao ? (
                 <Button asChild size="lg" className="rounded-full gap-2">
-                  <a href={content.cta.botao.link} target="_blank" rel="noopener noreferrer">
+                  <a href={content.cta.botao.link} target="_blank" rel="noopener noreferrer" onClick={trackLead}>
                     <WhatsAppIcon className="w-5 h-5" /> {content.cta.botao.texto}
                   </a>
                 </Button>
@@ -215,7 +216,7 @@ export default function Planos() {
               Não foi possível carregar o conteúdo agora. Tente novamente em instantes.
             </p>
             <Button asChild className="rounded-full">
-              <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer">
+              <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" onClick={trackLead}>
                 Falar com um contador
               </a>
             </Button>

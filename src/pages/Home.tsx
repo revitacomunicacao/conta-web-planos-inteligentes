@@ -20,6 +20,7 @@ import { CheckCircle2 } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchHomePage, normalizeHomeContent } from "@/lib/homePageApi";
 import { getLucideIcon } from "@/lib/lucideIconRegistry";
+import { trackLead } from "@/lib/fbq";
 
 const stagger = {
   hidden: {},
@@ -80,7 +81,9 @@ function Hero({
               <p className="text-lg leading-relaxed text-white">{texto2}</p>
               {botao ? (
                 <Button asChild size="lg" className="rounded-full text-base">
-                  <a href={botao.link}>{botao.texto}</a>
+                  <a href={botao.link} onClick={trackLead}>
+                    {botao.texto}
+                  </a>
                 </Button>
               ) : null}
             </div>
@@ -333,7 +336,7 @@ function PlansPreview() {
                       : "bg-foreground text-background hover:bg-navy-light"
                   }`}
                 >
-                  <a href={getWhatsAppPlanLink(plan.name)} target="_blank" rel="noopener noreferrer">
+                  <a href={getWhatsAppPlanLink(plan.name)} target="_blank" rel="noopener noreferrer" onClick={trackLead}>
                     Contratar
                   </a>
                 </Button>
@@ -395,7 +398,7 @@ function CtaBanner({ title, descricao, button }: { title: string; descricao: str
             size="lg"
             className="rounded-full bg-background text-base text-foreground hover:bg-background/90"
           >
-            <a href={button.link} target="_blank" rel="noopener noreferrer">
+            <a href={button.link} target="_blank" rel="noopener noreferrer" onClick={trackLead}>
               {button.texto}
             </a>
           </Button>
@@ -439,7 +442,7 @@ function FreeCta({
         <div className="mt-10 grid gap-3 sm:grid-cols-2 justify-center max-w-3xl mx-auto">
           {botao1 ? (
             <Button asChild size="lg" className="rounded-full bg-background text-base text-foreground hover:bg-background/90">
-              <a href={botao1.link} target="_blank" rel="noopener noreferrer">
+              <a href={botao1.link} target="_blank" rel="noopener noreferrer" onClick={trackLead}>
                 {botao1.texto}
               </a>
             </Button>
@@ -452,7 +455,7 @@ function FreeCta({
               variant="outline"
               className="rounded-full text-base text-foreground border-background/40 hover:text-accent-foreground"
             >
-              <a href={botao2.link} target="_blank" rel="noopener noreferrer">
+              <a href={botao2.link} target="_blank" rel="noopener noreferrer" onClick={trackLead}>
                 {botao2.texto}
               </a>
             </Button>
@@ -513,7 +516,7 @@ export default function Home() {
               Não foi possível carregar o conteúdo agora. Tente novamente em instantes.
             </p>
             <Button asChild className="rounded-full">
-              <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer">
+              <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" onClick={trackLead}>
                 Falar com um contador
               </a>
             </Button>

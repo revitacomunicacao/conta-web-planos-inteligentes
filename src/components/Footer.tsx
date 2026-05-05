@@ -4,6 +4,7 @@ import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import logo from "@/assets/logo conta web branco.png";
 import { brandLogoImgClassName } from "@/lib/brandLogo";
 import { getWhatsAppLink } from "@/lib/whatsapp";
+import { trackLead } from "@/lib/fbq";
 
 const footerLinks = [
   {
@@ -53,7 +54,14 @@ export default function Footer() {
               <a href="#" className="p-2 rounded-full bg-background/10 hover:bg-background/20 transition-colors" aria-label="LinkedIn">
                 <Linkedin className="w-4 h-4" />
               </a>
-              <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-background/10 hover:bg-background/20 transition-colors" aria-label="WhatsApp">
+              <a
+                href={getWhatsAppLink()}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={trackLead}
+                className="p-2 rounded-full bg-background/10 hover:bg-background/20 transition-colors"
+                aria-label="WhatsApp"
+              >
                 <WhatsAppIcon className="w-4 h-4" />
               </a>
             </div>

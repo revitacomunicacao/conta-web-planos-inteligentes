@@ -7,6 +7,7 @@ import { getWhatsAppLink } from "@/lib/whatsapp";
 import logo from "@/assets/logo.png";
 import { brandLogoImgClassName } from "@/lib/brandLogo";
 import { cn } from "@/lib/utils";
+import { trackLead } from "@/lib/fbq";
 
 const links = [
   { to: "/", label: "Home" },
@@ -79,13 +80,13 @@ export default function Navbar() {
             </a>
           </Button>
           <Button asChild className="rounded-full gap-2 bg-accent hover:bg-emerald-light text-accent-foreground">
-            <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer">
+            <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" onClick={trackLead}>
               <WhatsAppIcon className="w-4 h-4" />
               Falar com Contador
             </a>
           </Button>
           <Button asChild className="rounded-full gap-2 bg-accent hover:bg-emerald-light text-accent-foreground">
-            <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer">
+            <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" onClick={trackLead}>
               <WhatsAppIcon className="w-4 h-4" />
               Serviços adicionais
             </a>
@@ -130,7 +131,7 @@ export default function Navbar() {
             </li>
             <li className="mt-2 px-3">
               <Button asChild className="w-full rounded-full gap-2 bg-accent hover:bg-emerald-light text-accent-foreground">
-                <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer">
+                <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" onClick={trackLead}>
                   <WhatsAppIcon className="w-4 h-4" />
                   Falar com Contador
                 </a>
@@ -138,7 +139,7 @@ export default function Navbar() {
             </li>
             <li className="mt-2 px-3">
               <Button asChild className="w-full rounded-full gap-2 bg-accent hover:bg-emerald-light text-accent-foreground">
-                <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer">
+                <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" onClick={trackLead}>
                   <WhatsAppIcon className="w-4 h-4" />
                   Serviços adicionais
                 </a>

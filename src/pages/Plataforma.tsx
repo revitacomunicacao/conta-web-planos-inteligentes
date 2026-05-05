@@ -11,6 +11,7 @@ import topoInternasPhoto from "@/assets/TopoInternas.jpg.jpeg";
 import { useQuery } from "@tanstack/react-query";
 import { fetchPlataformaPage, normalizePlataformaContent } from "@/lib/plataformaPageApi";
 import { getLucideIcon } from "@/lib/lucideIconRegistry";
+import { trackLead } from "@/lib/fbq";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -56,7 +57,7 @@ export default function Plataforma() {
                   <p className="text-background/60 text-lg max-w-lg leading-relaxed mb-6">{content.banner.descricao}</p>
                   {content.banner.botao ? (
                     <Button asChild size="lg" className="rounded-full bg-primary hover:bg-sky-light">
-                      <a href={content.banner.botao.link} target="_blank" rel="noopener noreferrer">
+                      <a href={content.banner.botao.link} target="_blank" rel="noopener noreferrer" onClick={trackLead}>
                         {content.banner.botao.texto} <ArrowRight className="w-4 h-4 ml-1" />
                       </a>
                     </Button>
@@ -158,7 +159,7 @@ export default function Plataforma() {
               <p className="text-muted-foreground max-w-lg mx-auto mb-8">{content.cta.descricao}</p>
               {content.cta.botao ? (
                 <Button asChild size="lg" className="rounded-full gap-2">
-                  <a href={content.cta.botao.link} target="_blank" rel="noopener noreferrer">
+                  <a href={content.cta.botao.link} target="_blank" rel="noopener noreferrer" onClick={trackLead}>
                     <WhatsAppIcon className="w-5 h-5" /> {content.cta.botao.texto}
                   </a>
                 </Button>
@@ -179,7 +180,7 @@ export default function Plataforma() {
               Não foi possível carregar o conteúdo agora. Tente novamente em instantes.
             </p>
             <Button asChild className="rounded-full">
-              <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer">
+              <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" onClick={trackLead}>
                 Falar com um contador
               </a>
             </Button>
